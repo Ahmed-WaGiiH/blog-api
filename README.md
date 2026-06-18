@@ -144,12 +144,12 @@ All endpoints are prefixed with `/api/v1`.
 
 Interactive Swagger UI is available at `/api-docs` when the server is running.
 
-Live demo: `https://your-app.railway.app/api-docs`
+Live demo: `https://web-production-3c21e.up.railway.app/api-docs`
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 This API is deployed on **Railway** with a managed PostgreSQL instance.
 
-Live URL: `https://your-app.railway.app`
+Live URL: `https://web-production-3c21e.up.railway.app`
