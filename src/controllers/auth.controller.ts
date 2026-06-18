@@ -11,8 +11,9 @@ export const register = async (
 ): Promise<void> => {
   try {
     const { name, email, password } = req.body;
+    const normalizedEmail = email.toLowerCase();
 
-    const existing = await prisma.user.findUnique({ where: { email } });
+    const existing = await prisma.user.findUnique({ where: { email: normalizedEmail } });
     if (existing) {
       return next(new AppError("Email already in use", 400));
     }
@@ -20,7 +21,7 @@ export const register = async (
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword },
+      data: { name, email: normalizedEmail, password: hashedPassword },
     });
 
     const { password: _, ...userWithoutPassword } = user;
@@ -42,8 +43,9 @@ export const login = async (
 ): Promise<void> => {
   try {
     const { email, password } = req.body;
+    const normalizedEmail = email.toLowerCase();
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
     if (!user) {
       return next(new AppError("Invalid email or password", 401));
     }
