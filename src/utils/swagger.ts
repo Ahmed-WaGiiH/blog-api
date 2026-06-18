@@ -10,15 +10,15 @@ const options: swaggerJsdoc.Options = {
         "A secure RESTful API for managing blog posts with JWT authentication",
     },
     servers: [
-      {
-        url: `http://localhost:${process.env.PORT || 5000}/api/v1`,
-        description: "Development server",
-      },
-      {
-        url: "https://web-production-3c21e.up.railway.app",
-        description: "Production server",
-      },
-    ],
+    {
+      url: `http://localhost:${process.env.PORT || 5000}/api/v1`,
+      description: 'Development server',
+    },
+    {
+      url: 'https://web-production-3c21e.up.railway.app/api/v1',
+      description: 'Production server',
+    },
+  ],
     components: {
       securitySchemes: {
         bearerAuth: {
